@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pomdpx version="0.1" id="adaptiveMgmt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="pomdpx.xsd"> 
+<Description> This file has been generated using the MDPToolboxToPOMDPX converter </Description>
+<Discount> 0.9 </Discount>
+<Variable>
+
+<StateVar vnamePrev= "x_0" vnameCurr= "x_1" fullyObs= "true">
+<ValueEnum> x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 </ValueEnum>
+</StateVar>
+
+<StateVar vnamePrev= "y_0" vnameCurr= "y_1" fullyObs= "false">
+<ValueEnum> y1 y2 y3 y4 </ValueEnum>
+</StateVar>
+
+<ObsVar vname= "obs_x">
+<ValueEnum> ox1 ox2 ox3 ox4 ox5 ox6 ox7 ox8 ox9 ox10 </ValueEnum> </ObsVar>
+
+<ActionVar vname= "actionsList">
+<ValueEnum> a1 a2 a3 a4 </ValueEnum>
+</ActionVar>
+<RewardVar vname= "reward_sp"/>
+</Variable>
+
+ <InitialStateBelief>
+
+<CondProb>
+<Var>x_0</Var>
+<Parent> null </Parent>
+<Parameter type= "TBL">
+<Entry>
+<Instance> - </Instance> 
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>
+</Entry>
+</Parameter>
+</CondProb>
+
+<CondProb>
+<Var>y_0</Var>
+<Parent> null </Parent>
+<Parameter type= "TBL">
+<Entry>
+<Instance> - </Instance> 
+<ProbTable> 0.25 0.25 0.25 0.25 </ProbTable>
+</Entry>
+</Parameter>
+</CondProb>
+ </InitialStateBelief>
+
+<StateTransitionFunction>
+
+<CondProb>
+<Var>x_1</Var>
+<Parent> y_0 actionsList x_0 </Parent>
+<Parameter type= "TBL">
+<Entry>
+<Instance> y1 a1 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x2 - </Instance>
+<ProbTable> 0 0.8 0.2 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x3 - </Instance>
+<ProbTable> 0 0 0.9 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x4 - </Instance>
+<ProbTable> 0 0 0 1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x5 - </Instance>
+<ProbTable> 0 0 0 0.2 0.8 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x6 - </Instance>
+<ProbTable> 0 0 0 0 0.4 0.6 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x7 - </Instance>
+<ProbTable> 0 0 0 0 0.3 0.2 0.5 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x8 - </Instance>
+<ProbTable> 0 0 0 0 0.1 0.2 0.1 0.6 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x9 - </Instance>
+<ProbTable> 0 0 0 0 0.1 0.2 0 0.2 0.5 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a1 x10 - </Instance>
+<ProbTable> 0 0 0 0 0 0.3 0 0.1 0.1 0.5 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x2 - </Instance>
+<ProbTable> 0.4 0.6 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x3 - </Instance>
+<ProbTable> 0 0.7 0.3 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x4 - </Instance>
+<ProbTable> 0 0 1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x5 - </Instance>
+<ProbTable> 0 0 0.2 0.6 0.2 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x6 - </Instance>
+<ProbTable> 0 0 0 0.3 0.7 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x7 - </Instance>
+<ProbTable> 0 0 0 0.1 0.3 0.6 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x8 - </Instance>
+<ProbTable> 0 0 0 0 0.3 0.2 0.5 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x9 - </Instance>
+<ProbTable> 0 0 0 0 0.3 0 0.1 0.5 0.1 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a2 x10 - </Instance>
+<ProbTable> 0 0 0 0 0.2 0.1 0.1 0.1 0.5 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x3 - </Instance>
+<ProbTable> 0.3 0.7 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x4 - </Instance>
+<ProbTable> 0 0.2 0.8 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x5 - </Instance>
+<ProbTable> 0 0 0.7 0.3 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x6 - </Instance>
+<ProbTable> 0 0 0.1 0.7 0.2 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x7 - </Instance>
+<ProbTable> 0 0 0 0.3 0.2 0.5 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x8 - </Instance>
+<ProbTable> 0 0 0 0.2 0.1 0.6 0.1 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x9 - </Instance>
+<ProbTable> 0 0 0 0 0.3 0.1 0.5 0.1 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a3 x10 - </Instance>
+<ProbTable> 0 0 0 0 0.3 0 0.2 0.2 0.3 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x4 - </Instance>
+<ProbTable> 0 1 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x5 - </Instance>
+<ProbTable> 0 0.7 0.3 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x6 - </Instance>
+<ProbTable> 0 0 0.8 0.2 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x7 - </Instance>
+<ProbTable> 0 0 0.3 0.6 0.1 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x8 - </Instance>
+<ProbTable> 0 0 0.1 0.2 0.7 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x9 - </Instance>
+<ProbTable> 0 0 0 0.3 0.1 0.6 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y1 a4 x10 - </Instance>
+<ProbTable> 0 0 0 0.3 0 0.2 0.5 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x1 - </Instance>
+<ProbTable> 0.4 0.3 0.3 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x2 - </Instance>
+<ProbTable> 0 0.3 0.6 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x3 - </Instance>
+<ProbTable> 0 0.3 0.6 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x4 - </Instance>
+<ProbTable> 0 0.3 0.6 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x5 - </Instance>
+<ProbTable> 0 0.4 0.5 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x6 - </Instance>
+<ProbTable> 0 0.4 0.5 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x7 - </Instance>
+<ProbTable> 0.1 0.4 0.4 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x8 - </Instance>
+<ProbTable> 0.1 0.4 0.4 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x9 - </Instance>
+<ProbTable> 0.1 0.5 0.3 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a1 x10 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x1 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x2 - </Instance>
+<ProbTable> 0.1 0.3 0.6 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x3 - </Instance>
+<ProbTable> 0.1 0.4 0.5 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x4 - </Instance>
+<ProbTable> 0.1 0.4 0.5 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x5 - </Instance>
+<ProbTable> 0.1 0.4 0.4 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x6 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x7 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x8 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x9 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a2 x10 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x1 - </Instance>
+<ProbTable> 0.9 0.1 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x2 - </Instance>
+<ProbTable> 0.1 0.8 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x3 - </Instance>
+<ProbTable> 0.1 0.5 0.4 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x4 - </Instance>
+<ProbTable> 0.1 0.6 0.3 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x5 - </Instance>
+<ProbTable> 0.1 0.6 0.3 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x6 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x7 - </Instance>
+<ProbTable> 0.1 0.6 0.2 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x8 - </Instance>
+<ProbTable> 0.2 0.7 0 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x9 - </Instance>
+<ProbTable> 0.2 0.7 0 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a3 x10 - </Instance>
+<ProbTable> 0.2 0.7 0 0.1 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x2 - </Instance>
+<ProbTable> 0.7 0.3 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x3 - </Instance>
+<ProbTable> 0.4 0.6 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x4 - </Instance>
+<ProbTable> 0.3 0.7 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x5 - </Instance>
+<ProbTable> 0.3 0.6 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x6 - </Instance>
+<ProbTable> 0.3 0.6 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x7 - </Instance>
+<ProbTable> 0.3 0.6 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x8 - </Instance>
+<ProbTable> 0.4 0.5 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x9 - </Instance>
+<ProbTable> 0.4 0.5 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y2 a4 x10 - </Instance>
+<ProbTable> 0.4 0.5 0.1 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x1 - </Instance>
+<ProbTable> 0.9 0.1 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x2 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x3 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x4 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x5 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x6 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x7 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x8 - </Instance>
+<ProbTable> 0.8 0.2 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x9 - </Instance>
+<ProbTable> 0.9 0.1 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a1 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a2 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a3 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y3 a4 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a1 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a2 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a3 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x1 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x2 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x3 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x4 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x5 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x6 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x7 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x8 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x9 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+<Entry>
+<Instance> y4 a4 x10 - </Instance>
+<ProbTable> 1 0 0 0 0 0 0 0 0 0 </ProbTable>  
+</Entry>
+</Parameter>
+
+</CondProb>
+
+<CondProb>
+<Var>y_1</Var>
+<Parent>y_0</Parent>
+<Parameter type= "TBL">
+<Entry>
+<Instance>- - </Instance>
+<ProbTable>identity</ProbTable>
+</Entry>
+</Parameter>
+
+</CondProb>
+
+</StateTransitionFunction>
+<ObsFunction>
+<CondProb>
+<Var>obs_x</Var>
+<Parent>x_1</Parent>
+<Parameter type= "TBL">
+<Entry>
+<Instance>- -</Instance>
+<ProbTable>
+1  0  0  0  0  0  0  0  0  0 
+0  1  0  0  0  0  0  0  0  0 
+0  0  1  0  0  0  0  0  0  0 
+0  0  0  1  0  0  0  0  0  0 
+0  0  0  0  1  0  0  0  0  0 
+0  0  0  0  0  1  0  0  0  0 
+0  0  0  0  0  0  1  0  0  0 
+0  0  0  0  0  0  0  1  0  0 
+0  0  0  0  0  0  0  0  1  0 
+0  0  0  0  0  0  0  0  0  1 
+</ProbTable>
+
+</Entry>
+</Parameter>
+</CondProb>
+</ObsFunction>
+
+<RewardFunction>
+<Func>
+<Var>reward_sp</Var>
+<Parent> actionsList x_1 </Parent> 
+ <Parameter type= "TBL">
+<Entry>
+<Instance> a1 - </Instance>
+<ValueTable>-2.439      -4.878      -4.878      -6.504      -7.317      -7.317      -7.317      -7.317      -7.317      -7.317</ValueTable> 
+</Entry>
+<Entry>
+<Instance> a2 - </Instance>
+<ValueTable>-2.5609     -4.9999     -4.9999      -6.626      -7.439      -7.439      -7.439      -7.439      -7.439      -7.439</ValueTable> 
+</Entry>
+<Entry>
+<Instance> a3 - </Instance>
+<ValueTable>-2.6829     -5.1219     -5.1219     -6.7479     -7.5609     -7.5609     -7.5609     -7.5609     -7.5609     -7.5609</ValueTable> 
+</Entry>
+<Entry>
+<Instance> a4 - </Instance>
+<ValueTable>-2.9268     -5.3658     -5.3658     -6.9918     -7.8048     -7.8048     -7.8048     -7.8048     -7.8048     -7.8048</ValueTable> 
+</Entry>
+</Parameter>
+</Func>
+</RewardFunction>
+</pomdpx>

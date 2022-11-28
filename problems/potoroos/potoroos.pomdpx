@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pomdpx version="0.1" id="adaptiveMgmt"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="pomdpx.xsd"> 
+
+<Description>
+This is an input file for the trend version of the AM pomdp
+</Description>
+
+
+<Discount> 0.9 </Discount>
+
+ <Variable>
+	 <StateVar vnamePrev= "fox_0" vnameCurr= "fox_1" fullyObs= "true">
+	 	 <ValueEnum> HighF LowF </ValueEnum>
+	 </StateVar>
+	 <StateVar vnamePrev= "foxPrev_0" vnameCurr= "foxPrev_1" fullyObs= "true">
+	 	 <ValueEnum> HighF LowF </ValueEnum>
+	 </StateVar>
+	 <StateVar vnamePrev= "species_0" vnameCurr= "species_1" fullyObs= "true">
+	 	 <ValueEnum> LocExtSp LowSp HighSp </ValueEnum>
+	 </StateVar>
+	 <StateVar vnamePrev= "speciesPrev_0" vnameCurr= "speciesPrev_1" fullyObs= "true">
+	 	 <ValueEnum> LocExtSp LowSp HighSp </ValueEnum>
+	 </StateVar>
+	 <StateVar vnamePrev= "foxModel_0" vnameCurr= "foxModel_1" fullyObs= "false">
+	 	 <ValueEnum> F1 F2 F3 F4 F5 F6 F7 F8 F9 </ValueEnum>
+	 </StateVar>
+	 <StateVar vnamePrev= "speciesModel_0" vnameCurr= "speciesModel_1" fullyObs= "false">
+	 	 <ValueEnum> S1 S2 S3 </ValueEnum>
+	 </StateVar>
+	 <ObsVar vname= "obs_fox">
+	 	 <ValueEnum> oHighF oLowF </ValueEnum>
+	 </ObsVar>
+	 <ObsVar vname= "obs_species">
+	 	 <ValueEnum> oLocExtSp oLowSp oHighSp </ValueEnum>
+	 </ObsVar>
+	 <ActionVar vname= "actionsList">
+	 	 <ValueEnum> do_nothing a1 a2 a3 a4 a5 </ValueEnum>
+	 </ActionVar>
+	 <RewardVar vname= "reward_sp"/>
+</Variable> 
+
+
+ <InitialStateBelief>
+
+ 	 <CondProb>
+	 	 <Var>fox_0</Var>
+	 	 <Parent> null </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance> - </Instance> 
+	 	 	 	 <ProbTable>1 0 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>species_0</Var>
+	 	 <Parent> null </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance> - </Instance> 
+	 	 	 	 <ProbTable>0 1 0 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>foxPrev_0</Var>
+	 	 <Parent> null </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance> - </Instance> 
+	 	 	 	 <ProbTable>1 0 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>speciesPrev_0</Var>
+	 	 <Parent> null </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance> - </Instance> 
+	 	 	 	 <ProbTable>0 1 0 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>foxModel_0</Var>
+	 	 <Parent> null </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance> - </Instance> 
+	 	 	 	 <ProbTable>0.111 0.111 0.111 0.111 0.111 0.111 0.111 0.111 0.112 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>speciesModel_0</Var>
+	 	 <Parent> null </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance> - </Instance> 
+	 	 	 	 <ProbTable>0.33 0.33 0.34 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+</InitialStateBelief> 
+
+
+ <StateTransitionFunction>
+
+ 	 <CondProb>
+	 	 <Var>fox_1</Var>
+	 	 <Parent> foxModel_0 actionsList foxPrev_0 fox_0 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>* do_nothing HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>* do_nothing HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>* do_nothing LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>* do_nothing LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F1 * HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F1 * HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F1 * LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F1 * LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.562912087912088 0.437087912087912 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.475 0.525 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.531818181818182 0.468181818181818 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.433333333333333 0.566666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.491391941391941 0.508608058608059 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.383333333333333 0.616666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.454545454545454 0.545454545454546 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.333333333333333 0.666666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.354853479853479 0.645146520146521 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.208333333333333 0.791666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.338636363636364 0.661363636363636 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.183333333333333 0.816666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F2 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.491391941391941 0.508608058608059 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.383333333333333 0.616666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.454545454545454 0.545454545454546 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.333333333333333 0.666666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.458882783882784 0.541117216117216 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.341666666666667 0.658333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.448106060606061 0.551893939393939 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.325 0.675 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.354853479853479 0.645146520146521 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.208333333333333 0.791666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.338636363636364 0.661363636363636 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.183333333333333 0.816666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F3 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.491391941391941 0.508608058608059 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.383333333333333 0.616666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.454545454545454 0.545454545454546 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.333333333333333 0.666666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.354853479853479 0.645146520146521 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.208333333333333 0.791666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.338636363636364 0.661363636363636 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.183333333333333 0.816666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F4 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.491391941391941 0.508608058608059 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.383333333333333 0.616666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.454545454545454 0.545454545454546 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.333333333333333 0.666666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F5 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.458882783882784 0.541117216117216 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.341666666666667 0.658333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.448106060606061 0.551893939393939 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.325 0.675 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.354853479853479 0.645146520146521 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.208333333333333 0.791666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.338636363636364 0.661363636363636 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.183333333333333 0.816666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F6 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.354853479853479 0.645146520146521 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.208333333333333 0.791666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.338636363636364 0.661363636363636 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.183333333333333 0.816666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F7 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.875 0.125 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.575 0.425 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.866666666666667 0.133333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.566666666666667 0.433333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F8 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a1 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.562912087912088 0.437087912087912 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a1 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.475 0.525 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a1 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.531818181818182 0.468181818181818 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a1 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.433333333333333 0.566666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a2 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.491391941391941 0.508608058608059 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a2 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.383333333333333 0.616666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a2 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.454545454545454 0.545454545454546 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a2 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.333333333333333 0.666666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a3 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.458882783882784 0.541117216117216 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a3 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.341666666666667 0.658333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a3 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.448106060606061 0.551893939393939 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a3 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.325 0.675 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a4 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.354853479853479 0.645146520146521 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a4 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.208333333333333 0.791666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a4 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.338636363636364 0.661363636363636 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a4 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.183333333333333 0.816666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a5 HighF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.283333333333333 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a5 HighF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a5 LowF HighF - </Instance> 
+	 	 	 	 <ProbTable>0.3 0.7 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>F9 a5 LowF LowF - </Instance> 
+	 	 	 	 <ProbTable>0.133333333333333 0.866666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>species_1</Var>
+	 	 <Parent> speciesModel_0 fox_0 speciesPrev_0 species_0 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>* * LocExtSp * - </Instance> 
+	 	 	 	 <ProbTable>1 0 0 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>* * * LocExtSp - </Instance> 
+	 	 	 	 <ProbTable>1 0 0 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 HighF LowSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.225 0.733333333333333 0.0416666666666671 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 HighF LowSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.175 0.308333333333333 0.516666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 HighF HighSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.225 0.733333333333333 0.0416666666666671 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 HighF HighSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.166666666666667 0.383333333333333 0.45 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 LowF LowSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.175 0.683333333333333 0.141666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 LowF LowSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.116666666666667 0.166666666666666 0.716666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 LowF HighSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.175 0.683333333333333 0.141666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S1 LowF HighSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.108333333333333 0.225 0.666666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 HighF LowSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.225 0.733333333333333 0.0416666666666671 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 HighF LowSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.175 0.308333333333333 0.516666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 HighF HighSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.225 0.733333333333333 0.0416666666666671 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 HighF HighSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.166666666666667 0.383333333333333 0.45 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 LowF LowSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.108333333333333 0.625 0.266666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 LowF LowSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.0333333333333333 0.0833333333333337 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 LowF HighSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.108333333333333 0.625 0.266666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S2 LowF HighSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.035 0.123333333333333 0.841666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S3 * LowSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.108333333333333 0.625 0.266666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S3 * LowSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.0333333333333333 0.0833333333333337 0.883333333333333 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S3 * HighSp LowSp - </Instance> 
+	 	 	 	 <ProbTable>0.108333333333333 0.625 0.266666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>S3 * HighSp HighSp - </Instance> 
+	 	 	 	 <ProbTable>0.035 0.123333333333333 0.841666666666667 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>foxPrev_1</Var>
+	 	 <Parent> fox_0 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>- - </Instance> 
+	 	 	 	 <ProbTable>identity </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>speciesPrev_1</Var>
+	 	 <Parent> species_0 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>- - </Instance> 
+	 	 	 	 <ProbTable>identity </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>foxModel_1</Var>
+	 	 <Parent> foxModel_0 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>- - </Instance> 
+	 	 	 	 <ProbTable>identity </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>speciesModel_1</Var>
+	 	 <Parent> speciesModel_0 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>- - </Instance> 
+	 	 	 	 <ProbTable>identity </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+</StateTransitionFunction> 
+
+
+ <ObsFunction>
+
+ 	 <CondProb>
+	 	 <Var>obs_fox</Var>
+	 	 <Parent> fox_1 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>- - </Instance> 
+	 	 	 	 <ProbTable>1 0 0 1 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+
+ 	 <CondProb>
+	 	 <Var>obs_species</Var>
+	 	 <Parent> species_1 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>- - </Instance> 
+	 	 	 	 <ProbTable>1 0 0 0 1 0 0 0 1 </ProbTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+	 </CondProb>
+</ObsFunction> 
+
+
+ <RewardFunction>
+
+ 	 <Func>
+	 	 <Var>reward_sp</Var>
+	 	 <Parent> actionsList species_1 </Parent> 
+	 	 <Parameter type= "TBL">
+	 	 	 <Entry>
+	 	 	 	 <Instance>do_nothing LocExtSp </Instance> 
+	 	 	 	 <ValueTable>-10 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>do_nothing LowSp </Instance> 
+	 	 	 	 <ValueTable>0 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>do_nothing HighSp </Instance> 
+	 	 	 	 <ValueTable>0 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a1 LocExtSp </Instance> 
+	 	 	 	 <ValueTable>-10.5 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a1 LowSp </Instance> 
+	 	 	 	 <ValueTable>-0.5 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a1 HighSp </Instance> 
+	 	 	 	 <ValueTable>-0.5 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a2 LocExtSp </Instance> 
+	 	 	 	 <ValueTable>-11 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a2 LowSp </Instance> 
+	 	 	 	 <ValueTable>-1 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a2 HighSp </Instance> 
+	 	 	 	 <ValueTable>-1 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a3 LocExtSp </Instance> 
+	 	 	 	 <ValueTable>-11.18 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a3 LowSp </Instance> 
+	 	 	 	 <ValueTable>-1.18 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a3 HighSp </Instance> 
+	 	 	 	 <ValueTable>-1.18 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a4 LocExtSp </Instance> 
+	 	 	 	 <ValueTable>-11.68 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a4 LowSp </Instance> 
+	 	 	 	 <ValueTable>-1.68 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a4 HighSp </Instance> 
+	 	 	 	 <ValueTable>-1.68 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a5 LocExtSp </Instance> 
+	 	 	 	 <ValueTable>-12.18 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a5 LowSp </Instance> 
+	 	 	 	 <ValueTable>-2.18 </ValueTable>
+ 	 	 	 </Entry>
+	 	 	 <Entry>
+	 	 	 	 <Instance>a5 HighSp </Instance> 
+	 	 	 	 <ValueTable>-2.18 </ValueTable>
+ 	 	 	 </Entry>
+	 	 </Parameter>
+
+ 	 </Func>
+</RewardFunction> 
+
+</pomdpx> 
+
